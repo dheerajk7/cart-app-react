@@ -2,17 +2,6 @@ import React from 'react';
 
 class CartItem extends React.Component      //creating react component
 {
-    constructor()
-    {
-        super();
-        this.state = {
-            title:'Mobile Phone',
-            price:999,
-            qty:1,
-        }
-        //another way of binding function with the dom and we can use arrow function as well instead of that normal function
-        this.decreaseQuantity = this.decreaseQuantity.bind(this);
-    }
 
     tesingSetStateWithPromise()
     {
@@ -105,7 +94,7 @@ class CartItem extends React.Component      //creating react component
     }
     render()
     {
-        const {title,price} = this.state;
+        const {title,price,qty} = this.props.product;
         return(
             <div className="cart-item">
                 <div className="left-block">
@@ -114,23 +103,23 @@ class CartItem extends React.Component      //creating react component
                 <div className="right-block">
                     <div style={style.title}>{title}</div>
                     <div style={style.price}>{price}</div>
-                    <div style={style.price}>{this.state.qty}</div>
+                    <div style={style.price}>{qty}</div>
                     <div className="cart-item-actions">
                         <img 
                             alt="increase" 
                             className="action-icons" 
                             src="https://image.flaticon.com/icons/png/512/1665/1665578.png"
-                            onClick={this.increaseQuantity.bind(this)}/>
+                            onClick={()=>{this.props.increaseQuantity(this.props.product);}}/>
                         <img 
                             alt="decrease" 
                             className="action-icons" 
                             src="https://as2.ftcdn.net/jpg/02/78/84/57/500_F_278845758_9xl3srVgd8p4jquxgxugGaHV1e5EOlLO.jpg"
-                            onClick={this.decreaseQuantity}/>
+                            onClick={()=>{this.props.decreaseQuantity(this.props.product);}}/>
                         <img 
                             alt="delete" 
                             className="action-icons" 
                             src="https://as1.ftcdn.net/jpg/03/40/32/90/500_F_340329038_j7H8dA1F0vdbw4ltVYNdZe7b8zv1KWLu.jpg"
-                            onClick={this.deleteItem}/>
+                            onClick={()=>{this.props.deleteItem(this.props.product);}}/>
                     </div>
                 </div>
             </div>
