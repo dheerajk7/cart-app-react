@@ -94,31 +94,31 @@ class CartItem extends React.Component      //creating react component
     }
     render()
     {
-        const {title,price,qty} = this.props.product;
+        const {title,price,qty,img} = this.props.product;
         return(
             <div className="cart-item">
                 <div className="left-block">
-                    <img style={style.image} alt = "not found"/>
+                    <img className='cart-item-image' src={img} alt = "not found"/>
                 </div>
                 <div className="right-block">
                     <div style={style.title}>{title}</div>
-                    <div style={style.price}>{price}</div>
-                    <div style={style.price}>{qty}</div>
+                    <div style={style.price}>RS {price}</div>
+                    <div style={style.price}>Quantity : {qty}</div>
                     <div className="cart-item-actions">
                         <img 
                             alt="increase" 
                             className="action-icons" 
-                            src="https://image.flaticon.com/icons/png/512/1665/1665578.png"
+                            src="https://image.flaticon.com/icons/svg/1828/1828817.svg"
                             onClick={()=>{this.props.increaseQuantity(this.props.product);}}/>
                         <img 
                             alt="decrease" 
                             className="action-icons" 
-                            src="https://as2.ftcdn.net/jpg/02/78/84/57/500_F_278845758_9xl3srVgd8p4jquxgxugGaHV1e5EOlLO.jpg"
+                            src="https://image.flaticon.com/icons/svg/929/929430.svg"
                             onClick={()=>{this.props.decreaseQuantity(this.props.product);}}/>
                         <img 
                             alt="delete" 
                             className="action-icons" 
-                            src="https://as1.ftcdn.net/jpg/03/40/32/90/500_F_340329038_j7H8dA1F0vdbw4ltVYNdZe7b8zv1KWLu.jpg"
+                            src="https://image.flaticon.com/icons/svg/833/833520.svg"
                             onClick={()=>{this.props.deleteItem(this.props.product);}}/>
                     </div>
                 </div>
@@ -130,11 +130,6 @@ class CartItem extends React.Component      //creating react component
 // we can apply styles these way as well using style object inside js
 const style = 
 {
-    image:{
-        background:'#ccc',
-        height:100,
-        width:100,
-    },
     title:{
         color:'navy',
         fontSize:25,
